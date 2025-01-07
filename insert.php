@@ -86,7 +86,7 @@ if(isset($_POST['submit'])) {
     
     if (empty($_POST["country"])) {
         $countryErr = "Country is required";
-    } else {
+    } else {  
         $country = input_data($_POST["country"]);
     }
 
@@ -102,11 +102,13 @@ if(isset($_POST['submit'])) {
         $result = mysqli_query($conn, "INSERT INTO task(firstname, lastname, email, password, cpassword, image, message, number, gender, hobby, country) 
         VALUES('$firstname', '$lastname', '$email', '$password', '$cpassword', '$img', '$message', '$number', '$gender', '$hobby', '$country')");
 
+      
         if ($result) {
+            header("location:view.php");
             echo "Data inserted successfully."; 
             
             ?>
-            <script>window.location.href="/AdminLTEPHP/view.php"</script>
+            <script>window.location.href="/avi/AdminLTEPHP/view.php"</script>
             <?php 
             exit();
         } else {

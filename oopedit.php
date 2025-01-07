@@ -1,13 +1,14 @@
 <?php
 include "header.php";
 include "sidebar.php";
-include  "update.php";
+include  "oopupdate.php";
 ?>
 <?php
-include "connection.php";
-$user_id = $_GET['id'];
-$sql =mysqli_query($conn,"SELECT * FROM `task` WHERE `id`='$user_id'");
-$result =mysqli_fetch_array($sql);  
+$userid=intval($_GET['id']);
+$onerecord = new DB_con();  
+$sql=$onerecord->fetchonerecord($userid);
+while($result=mysqli_fetch_array($sql))
+  {
 ?>
                 <main class="app-main">
         <!--begin::App Content Header-->
@@ -72,7 +73,7 @@ $result =mysqli_fetch_array($sql);
                            value="<?php echo $result['firstname'];?>"
                           
                           />
-                          <span class="error"><?php echo $firstnameErr; ?></span>
+                        
                           <div class="valid-feedback">Looks good!</div>
                         </div>
 
@@ -86,7 +87,7 @@ $result =mysqli_fetch_array($sql);
                             value="<?php echo $result['lastname'];?>"
                      
                           />
-                          <span class="error"><?php echo $lastnameErr; ?></span>
+                         
                           <div class="valid-feedback">Looks good!</div>
                         </div>
                        
@@ -101,7 +102,7 @@ $result =mysqli_fetch_array($sql);
                            value="<?php echo $result['email'];?>"
                           aria-describedby="emailHelp"
                         />
-                        <span class="error"><?php echo $emailErr; ?></span>
+                     
                         <div id="emailHelp" class="form-text">
                           We'll never share your email with anyone else.
                         </div>
@@ -109,12 +110,12 @@ $result =mysqli_fetch_array($sql);
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password"  id="exampleInputPassword1" value="<?php echo htmlspecialchars($result['password']); ?>"/>
-                        <span class="error"><?php echo $passwordErr; ?></span>
+                   
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" name="cpassword" id="exampleInputPassword1" value="<?php echo htmlspecialchars($result['cpassword']); ?>"/>
-                        <span class="error"><?php echo $cpasswordErr; ?></span>
+                   
                       </div>
                
                       <div class="input-group mb-3">
@@ -132,14 +133,14 @@ $result =mysqli_fetch_array($sql);
                       <div class="input-group">
                       <label for="message">Address</label><br>
                       <textarea id="message" name="message" rows="4" cols="50" placeholder="Enter your Address"><?php echo htmlspecialchars($result['message']); ?></textarea><br><br>
-                      <span class="error"><?php echo $messageErr; ?></span>
+                      
 
                     </div>
                     
                     <div class="mb-3">
                         <label for="phone number" class="form-label">Phone Number</label>
                         <input type="number" class="form-control"  name="number" id="phone number" value="<?php echo $result['number'];?>" />
-                        <span class="error"><?php echo $numberErr; ?></span>
+               
                       </div>
                         
                       <fieldset class="row mb-3">
@@ -152,7 +153,7 @@ $result =mysqli_fetch_array($sql);
                           <div class="form-check"> 
                           <input type="radio" name="gender" id="female"  value="female" <?php if ($result['gender'] == "female") echo "checked='checked'"; ?>>                       
                             <label class="form-check-label" for="female"> female </label>
-                            <span class="error"><?php echo $genderErr; ?></span>
+                           
                           </div>
                           <div class="form-check disabled">    
                       </fieldset>
@@ -181,7 +182,7 @@ $result =mysqli_fetch_array($sql);
                             <label class="form-check-label" for="Cricket">
                             Cricket
                             </label>
-                            <span class="error"><?php echo $hobbyErr; ?></span>
+                            
                           </div>
                         </div>
                       </div>
@@ -194,14 +195,11 @@ $result =mysqli_fetch_array($sql);
                             <option value="Canada" <?php if ($result['country'] == "Canada") echo "selected"; ?>>Canada</option>
                              <option value="Russia" <?php if ($result['country'] == "Russia") echo "selected"; ?>>Russia</option>
                            </select>
-                           <span class="error"><?php echo $countryErr; ?></span>
+                     
                           <div class="invalid-feedback">Please select a valid state.</div>
                         </div>
                           </div>
-                      <div class="mb-6 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div>
+                     <?php } ?>
                     </div>
                     <!--end::Body-->
                     <!--begin::Footer-->

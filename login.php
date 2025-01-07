@@ -16,14 +16,17 @@ if (isset($_POST['login'])) {
        
         $user = mysqli_fetch_assoc($query);
 
-        if ($user) {
+        $num_row = mysqli_num_row($user);
+
+        if ($num_row > 0) {
       
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['firstname'] = $user['firstname'];
-            $_SESSION['lastname'] = $user['lastname'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['email'] = $row['password'];
+            $_SESSION['firstname'] = $row['firstname'];
+            $_SESSION['lastname'] = $row['lastname'];
           
-            header("Location: form.php");
+            header("Location:form.php");
             exit();
         } else {
             echo "Incorrect email or password. Please try again.";

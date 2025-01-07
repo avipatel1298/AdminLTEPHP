@@ -1,4 +1,3 @@
-
 <?php
 include "header.php";
 include "sidebar.php";
@@ -11,7 +10,7 @@ include "insert.php";
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">General Form</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Register Form</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -65,7 +64,7 @@ include "insert.php";
                             class="form-control"
                             id="validationCustom01"
                            name="firstname" 
-                            required
+                            
                           />
                          
                           <div class="valid-feedback">Looks good!</div>
@@ -79,7 +78,7 @@ include "insert.php";
                             class="form-control"
                             id="validationCustom02"
                             name="lastname"
-                            required
+                            
                           />
                         
                           <div class="valid-feedback">Looks good!</div>
@@ -104,13 +103,13 @@ include "insert.php";
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <span class="error">* <?php echo $passwordErr; ?></span>
-                        <input type="password" class="form-control" name="password"  id="exampleInputPassword1" />
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword" />
                        
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                         <span class="error">* <?php echo $cpasswordErr; ?></span>
-                        <input type="cpassword" class="form-control" name="cpassword" id="exampleInputPassword1"/>
+                        <input type="password" class="form-control" name="cpassword" id="exampleInputConfirmPassword"/>
                       
                       </div>
                       <div class="input-group mb-3">
@@ -130,7 +129,7 @@ include "insert.php";
                       </div>
                         
                       <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                        <legend class="col-form-label col-sm-2 pt-0">Gender<span class="error">* <?php echo $genderErr; ?></span></legend>
                         <div class="col-sm-10">
                           <div class="form-check">  
                           <input type="radio" name="gender" id="male" value="male" checked>         
@@ -139,27 +138,28 @@ include "insert.php";
                           <div class="form-check"> 
                           <input type="radio" name="gender" id="female" value="female">                       
                             <label class="form-check-label" for="female"> female </label>
-                            <span class="error">* <?php echo $genderErr; ?></span>
+                          
                           </div>
                           <div class="form-check disabled">    
                       </fieldset>
-                     
-                          <div class="row mb-3">
+                         
+                      <legend class="col-form-label col-sm-2 pt-0">Hobby<span class="error">* <?php echo $genderErr; ?></span></legend>
                         <div class="col-sm-10 offset-sm-2">
+                        <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="hobby" name="hobby[]" value="Reading" />
+                            <input class="form-check-input" type="checkbox"name="hobby[]" value="Reading" />
                             <label class="form-check-label" for="Reading">
                             Reading
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="hobby" name="hobby[]" value="Singing" />
+                            <input class="form-check-input" type="checkbox"name="hobby[]" value="Singing" />
                             <label class="form-check-label" for="Singing">
                             Singing
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="hobby"  name="hobby[]" value="Cricket" />
+                            <input class="form-check-input" type="checkbox" name="hobby[]" value="Cricket" />
                             <label class="form-check-label" for="Cricket">
                             Cricket
                             </label>
@@ -198,31 +198,7 @@ include "insert.php";
 
                   <!--end::Form-->
                   <!--begin::JavaScript-->
-                  <script>
-                    // Example starter JavaScript for disabling form submissions if there are invalid fields
-                    (() => {
-                      'use strict';
-
-                      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                      const forms = document.querySelectorAll('.needs-validation');
-
-                      // Loop over them and prevent submission
-                      Array.from(forms).forEach((form) => {
-                        form.addEventListener(
-                          'submit',
-                          (event) => {
-                            if (!form.checkValidity()) {
-                              event.preventDefault();
-                              event.stopPropagation();
-                            }
-
-                            form.classList.add('was-validated');
-                          },
-                          false,
-                        );
-                      });
-                    })();
-                  </script>
+              
                   <!--end::JavaScript-->
                 </div>
                 <!--end::Form Validation-->

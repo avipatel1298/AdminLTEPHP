@@ -124,7 +124,7 @@ if (isset($_POST['update'])) {
                 WHERE id='$user_id'");
 
             if ($update) {
-                echo "<script>window.location.href='/AdminLTEPHP/view.php'</script>";
+                echo "<script>window.location.href='/avi/AdminLTEPHP/view.php'</script>";
                 exit();
             } else {
                 echo "Data not updated successfully.";

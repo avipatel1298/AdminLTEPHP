@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
  
     if($result){
         echo "data insert sucessfully";
-        header("Location: login.php");
+        header("Location:login.php");
     }else{
         echo "data not insert sucessfully";
     }
