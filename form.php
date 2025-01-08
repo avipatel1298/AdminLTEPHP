@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 include "sidebar.php";
-include "insert.php";
+include "oopinsert.php";
 ?>
 <main class="app-main">
         <!--begin::App Content Header-->
@@ -28,21 +28,7 @@ include "insert.php";
           <!--begin::Container-->
           <div class="container-fluid">
             <!--begin::Row-->
-            <div class="row g-4">
-              <!--begin::Col-->
-              <div class="col-12">
-                <div class="callout callout-info">
-                  For detailed documentation of Form visit
-                  <a
-                    href="https://getbootstrap.com/docs/5.3/forms/overview/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="callout-link"
-                  >
-                    Bootstrap Form
-                  </a>
-                </div>
-              </div>
+          
               <!--end::Col-->
               <!--begin::Col-->
               <div class="col-md-12">
@@ -64,7 +50,7 @@ include "insert.php";
                             class="form-control"
                             id="validationCustom01"
                            name="firstname" 
-                            
+                           value="<?php echo $firstname; ?>" 
                           />
                          
                           <div class="valid-feedback">Looks good!</div>
@@ -78,7 +64,7 @@ include "insert.php";
                             class="form-control"
                             id="validationCustom02"
                             name="lastname"
-                            
+                            value="<?php echo $lastname; ?>"
                           />
                         
                           <div class="valid-feedback">Looks good!</div>
@@ -93,6 +79,7 @@ include "insert.php";
                           class="form-control"
                           id="exampleInputEmail1"
                            name="email"
+                           value="<?php echo $email; ?>"
                           aria-describedby="emailHelp"
                         />
                       
@@ -103,28 +90,28 @@ include "insert.php";
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <span class="error">* <?php echo $passwordErr; ?></span>
-                        <input type="password" class="form-control" name="password" id="exampleInputPassword" />
+                        <input type="password" class="form-control" name="password" value="<?php echo $password; ?>" id="exampleInputPassword" />
                        
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                         <span class="error">* <?php echo $cpasswordErr; ?></span>
-                        <input type="password" class="form-control" name="cpassword" id="exampleInputConfirmPassword"/>
+                        <input type="password" class="form-control" name="cpassword"  value="<?php echo $cpassword; ?>"  id="exampleInputConfirmPassword"/>
                       
                       </div>
                       <div class="input-group mb-3">
                         <input type="file" class="form-control"  name="image" id="inputGroupFile02" />
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        <label class="input-group-text" for="inputGroupFile02">Upload</label><span class="error"><?php echo $imageErr; ?></span>
                       </div>
                       <div class="input-group">
                       <span class="input-group-text">Address</span>
-                      <textarea class="form-control" name="message" aria-label="With textarea"></textarea><span class="error">* <?php echo $messageErr; ?></span>
+                      <textarea class="form-control" name="message" aria-label="With textarea"><?php echo $message; ?></textarea><span class="error">* <?php echo $messageErr; ?></span>
                     </div>
                     
                     <div class="mb-3">
                         <label for="phone number" class="form-label">Phone Number</label>
                         <span class="error">* <?php echo $numberErr; ?></span>
-                        <input type="number" class="form-control"  name="number" id="phone number" />  
+                        <input type="number" class="form-control"  name="number" value="<?php echo $number; ?>"  id="phone number" />  
                       
                       </div>
                         
@@ -132,38 +119,38 @@ include "insert.php";
                         <legend class="col-form-label col-sm-2 pt-0">Gender<span class="error">* <?php echo $genderErr; ?></span></legend>
                         <div class="col-sm-10">
                           <div class="form-check">  
-                          <input type="radio" name="gender" id="male" value="male" checked>         
-                            <label class="form-check-label" for="male"> male </label>
+                          <input type="radio" name="gender" id="male" value="male" <?php if ($gender == "male") echo "checked"; ?> />
+                          <label class="form-check-label" for="male">Male</label>
                           </div>
                           <div class="form-check"> 
-                          <input type="radio" name="gender" id="female" value="female">                       
-                            <label class="form-check-label" for="female"> female </label>
+                          <input type="radio" name="gender" id="female" value="female" <?php if ($gender == "female") echo "checked"; ?> />
+                           <label class="form-check-label" for="female">Female</label>
                           
                           </div>
                           <div class="form-check disabled">    
                       </fieldset>
                          
-                      <legend class="col-form-label col-sm-2 pt-0">Hobby<span class="error">* <?php echo $genderErr; ?></span></legend>
+                      <legend class="col-form-label col-sm-2 pt-0">Hobby <span class="error">* <?php echo $hobbyErr; ?></span></legend>
                         <div class="col-sm-10 offset-sm-2">
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox"name="hobby[]" value="Reading" />
+                            <input class="form-check-input" type="checkbox"name="hobby[]" value="Reading" <?php if (in_array('Reading', explode(",", $hobby))) echo "checked"; ?> />
                             <label class="form-check-label" for="Reading">
                             Reading
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox"name="hobby[]" value="Singing" />
+                            <input class="form-check-input" type="checkbox"name="hobby[]" value="Singing" <?php if (in_array('Singing', explode(",", $hobby))) echo "checked"; ?>/>
                             <label class="form-check-label" for="Singing">
                             Singing
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="hobby[]" value="Cricket" />
+                            <input class="form-check-input" type="checkbox" name="hobby[]" value="Cricket" <?php if (in_array('Cricket', explode(",", $hobby))) echo "checked"; ?> />
                             <label class="form-check-label" for="Cricket">
                             Cricket
                             </label>
-                            <span class="error">* <?php echo $hobbyErr; ?></span>
+                          
                           </div>
                         </div>
                       </div>
@@ -172,10 +159,10 @@ include "insert.php";
                           <label for="validationCustom04" class="form-label">Country</label>
                           <span class="error">* <?php echo $countryErr; ?></span>
                           <select class="form-select" id="validationCustom04" required name="country" id="country">
-                          <option value="India">India</option>
-                           <option value="America">America</option>
-                            <option value="Canada">Canada</option>
-                             <option value="Russia">Russia</option>
+                          <option value="India" <?php if ($country == "India") echo "selected"; ?>>India</option>
+                          <option value="America" <?php if ($country == "America") echo "selected"; ?>>America</option>
+                          <option value="Canada" <?php if ($country == "Canada") echo "selected"; ?>>Canada</option>
+                           <option value="Russia" <?php if ($country == "Russia") echo "selected"; ?>>Russia</option>
                            </select>
                          
                          
@@ -204,7 +191,7 @@ include "insert.php";
                 <!--end::Form Validation-->
               </div>
               <!--end::Col-->
-            </div>
+           
             <!--end::Row-->
         
           <!--end::Container-->

@@ -4,9 +4,10 @@ include "sidebar.php";
 include  "oopupdate.php";
 ?>
 <?php
-$userid=intval($_GET['id']);
+$user_id = intval($_GET['id']);
 $onerecord = new DB_con();  
-$sql=$onerecord->fetchonerecord($userid);
+$sql=$onerecord->fetchonerecord($user_id);
+
 while($result=mysqli_fetch_array($sql))
   {
 ?>
@@ -65,13 +66,13 @@ while($result=mysqli_fetch_array($sql))
                     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
                     <div class="col-md-6">
                           <label for="validationCustom01" class="form-label">First name</label>
+                          <span class="error">* <?php echo $firstnameErr; ?></span>
                           <input
                             type="text"
                             class="form-control"
                             id="validationCustom01"
                            name="firstname"
                            value="<?php echo $result['firstname'];?>"
-                          
                           />
                         
                           <div class="valid-feedback">Looks good!</div>
@@ -79,21 +80,21 @@ while($result=mysqli_fetch_array($sql))
 
                         <div class="col-md-6">
                           <label for="validationCustom02" class="form-label">Last name</label>
+                          <span class="error">* <?php echo $lastnameErr; ?></span>
                           <input
                             type="text"
                             class="form-control"
                             id="validationCustom02"
                             name="lastname"
                             value="<?php echo $result['lastname'];?>"
-                     
                           />
-                         
                           <div class="valid-feedback">Looks good!</div>
                         </div>
                        
 
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <span class="error">* <?php echo $emailErr; ?></span>
                         <input
                           type="email"
                           class="form-control"
@@ -109,11 +110,13 @@ while($result=mysqli_fetch_array($sql))
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <span class="error">* <?php echo $passwordErr; ?></span>
                         <input type="password" class="form-control" name="password"  id="exampleInputPassword1" value="<?php echo htmlspecialchars($result['password']); ?>"/>
                    
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                        <span class="error">* <?php echo $cpasswordErr; ?></span>
                         <input type="password" class="form-control" name="cpassword" id="exampleInputPassword1" value="<?php echo htmlspecialchars($result['cpassword']); ?>"/>
                    
                       </div>
@@ -121,6 +124,7 @@ while($result=mysqli_fetch_array($sql))
                       <div class="input-group mb-3">
                       <?php
                 $imagePath = './image/' . $result['image'] ;
+               
                 if (file_exists($imagePath)) {
                echo '<img src="' . $imagePath . '"style="width: 50px; height: 50px;"">';
                } else {
@@ -128,19 +132,18 @@ while($result=mysqli_fetch_array($sql))
                    }
                   ?>  
                         <input type="file" class="form-control"  name="image" id="inputGroupFile02"  value="<?php echo $result['image'];?>" />
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        <label class="input-group-text" for="inputGroupFile02">Upload</label><span class="error"><?php echo $imageErr; ?></span>
+                        </div>
                       </div>
                       <div class="input-group">
-                      <label for="message">Address</label><br>
+                      <label for="message">Address</label><br></br>
                       <textarea id="message" name="message" rows="4" cols="50" placeholder="Enter your Address"><?php echo htmlspecialchars($result['message']); ?></textarea><br><br>
-                      
-
                     </div>
                     
                     <div class="mb-3">
                         <label for="phone number" class="form-label">Phone Number</label>
+                        <span class="error">* <?php echo $numberErr; ?></span>
                         <input type="number" class="form-control"  name="number" id="phone number" value="<?php echo $result['number'];?>" />
-               
                       </div>
                         
                       <fieldset class="row mb-3">
@@ -159,9 +162,9 @@ while($result=mysqli_fetch_array($sql))
                       </fieldset>
 
                       <?php
-             $chk = explode(",",$result['hobby']);
-             ?>
-                     
+                     $chk = explode(",",$result['hobby']);
+                         ?>
+                                              <legend class="col-form-label col-sm-2 pt-0">Hobby <span class="error">* <?php echo $hobbyErr; ?></span></legend>
                           <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
                           <div class="form-check">
@@ -189,6 +192,7 @@ while($result=mysqli_fetch_array($sql))
                     
                          <div class="col-md-3">
                           <label for="validationCustom04" class="form-label">Country</label>
+                          <span class="error">* <?php echo $countryErr; ?></span>
                           <select class="form-select" id="validationCustom04" required name="country" id="country">
                           <option value="India" <?php if ($result['country'] == "India") echo "selected"; ?>>India</option>
                            <option value="America" <?php if ($result['country'] == "America") echo "selected"; ?>>America</option>
@@ -221,7 +225,7 @@ while($result=mysqli_fetch_array($sql))
                 <!--end::Form Validation-->
               </div>
               <!--end::Col-->
-            </div>
+            
             <!--end::Row-->
        
           <!--end::Container-->

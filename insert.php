@@ -1,7 +1,7 @@
 <?php
 include "connection.php";
 
-$firstnameErr = $lastnameErr = $emailErr = $passwordErr = $cpasswordErr = $numberErr = $genderErr = $hobbyErr = $countryErr = $messageErr = "";
+$firstnameErr = $lastnameErr = $emailErr = $passwordErr = $cpasswordErr = $numberErr = $genderErr = $hobbyErr = $countryErr = $messageErr = $imageErr = "";
 $firstname = $lastname = $email = $password = $cpassword = $number = $gender = $hobby = $country = $message = "";
 
 if(isset($_POST['submit'])) {
@@ -52,6 +52,29 @@ if(isset($_POST['submit'])) {
             $cpasswordErr = "Passwords do not match";
         }
     }
+    if ($_FILES['image']['error'] == 0) {
+        $img = $_FILES["image"]["name"];
+        $tmp_name = $_FILES["image"]["tmp_name"];
+        $file_ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+
+        
+        $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
+
+        
+        if (!in_array($file_ext, $allowed_types)) {
+            $imageErr = "Invalid file type. Only JPG, JPEG, PNG, GIF are allowed.";
+        }
+     
+        elseif ($_FILES["image"]["size"] > 5000000) {
+            $imageErr = "File size exceeds the limit of 5MB.";
+        } 
+       
+        else {
+            move_uploaded_file($tmp_name, "./image/" . $img);
+        }
+    } else {
+        $imageErr = "Please select an image to upload.";
+    }
 
     if (empty($_POST["number"])) {
         $numberErr = "Phone Number is required";
@@ -91,14 +114,9 @@ if(isset($_POST['submit'])) {
     }
 
     
-    if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) && empty($passwordErr) && empty($cpasswordErr) && empty($numberErr) && empty($messageErr) && empty($genderErr) && empty($hobbyErr) && empty($countryErr)) {
-        
-        
-        $img = $_FILES["image"]["name"];
-        $tmp_name = $_FILES["image"]["tmp_name"];
-        move_uploaded_file($tmp_name, "./image/" . $img);
+    if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) && empty($passwordErr) && empty($cpasswordErr) && empty($numberErr) && empty($messageErr) && empty($genderErr) && empty($hobbyErr) && empty($countryErr) && empty($imageErr)) {
+    
 
-       
         $result = mysqli_query($conn, "INSERT INTO task(firstname, lastname, email, password, cpassword, image, message, number, gender, hobby, country) 
         VALUES('$firstname', '$lastname', '$email', '$password', '$cpassword', '$img', '$message', '$number', '$gender', '$hobby', '$country')");
 

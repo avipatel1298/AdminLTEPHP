@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "connection.php"; 
 
 $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $cpasswordErr = $numberErr = $genderErr = $hobbyErr = $countryErr = $messageErr = "";
 $firstname = $lastname = $email = $password = $cpassword = $number = $gender = $hobby = $country = $message = "";
@@ -10,6 +10,7 @@ function input_data($data) {
 
 if (isset($_POST['update'])) {
 
+   
     if (empty($_POST["firstname"])) {
         $firstnameErr = "First Name is required";
     } else {
@@ -90,45 +91,69 @@ if (isset($_POST['update'])) {
         $country = input_data($_POST["country"]);
     }
 
+    
     if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) && empty($passwordErr) && empty($cpasswordErr) && empty($numberErr) && empty($messageErr) && empty($genderErr) && empty($hobbyErr) && empty($countryErr)) {
 
-     
+      
         if ($_FILES["image"]["name"] != "") {
             $img = $_FILES["image"]["name"];
             $tmp_name = $_FILES["image"]["tmp_name"];
-            move_uploaded_file($tmp_name, "./image/" . $img);
+            $file_ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+
+            $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
+
+          
+            if (!in_array($file_ext, $allowed_types)) {
+                $imageErr = "Invalid file type. Only JPG, JPEG, PNG, GIF are allowed.";
+            } else {
+              
+                $upload_dir = './image/';
+                if (move_uploaded_file($tmp_name, $upload_dir . $img)) {
+                    echo "Image uploaded successfully!";
+                } else {
+                    $imageErr = "Error uploading the image.";
+                }
+            }
         } else {
-         
-            $user_id = $_POST['user_id'];
+            
+            $user_id = $_POST['user_id'];  
             $result = mysqli_query($conn, "SELECT image FROM task WHERE id='$user_id'");
             $row = mysqli_fetch_assoc($result);
-            $img = $row['image'];
+            if ($row) {
+                $img = $row['image'];  
+            } else {
+                $imageErr = "Error retrieving the image.";
+            }
         }
 
-        if (isset($_POST['user_id'])) {
-            $user_id = $_POST['user_id'];
+       
+        if (empty($imageErr)) {
+            if (isset($_POST['user_id'])) {
+                $user_id = $_POST['user_id'];
 
-           
-            $update = mysqli_query($conn, "UPDATE task SET 
-                firstname='$firstname', 
-                lastname='$lastname',
-                email='$email',
-                password='$password',  
-                cpassword='$cpassword', 
-                image='$img', 
-                message='$message',
-                number='$number',
-                gender='$gender',
-                hobby='$hobby',
-                country='$country' 
-                WHERE id='$user_id'");
+                $update = mysqli_query($conn, "UPDATE task SET 
+                    firstname='$firstname', 
+                    lastname='$lastname',
+                    email='$email',
+                    password='$password',  
+                    cpassword='$cpassword', 
+                    image='$img', 
+                    message='$message',
+                    number='$number',
+                    gender='$gender',
+                    hobby='$hobby',
+                    country='$country' 
+                    WHERE id='$user_id'");
 
-            if ($update) {
-                echo "<script>window.location.href='/avi/AdminLTEPHP/view.php'</script>";
-                exit();
-            } else {
-                echo "Data not updated successfully.";
+                if ($update) {
+                    echo "<script>window.location.href='/avi/AdminLTEPHP/view.php'</script>";
+                    exit();
+                } else {
+                    echo "Data not updated successfully.";
+                }
             }
+        } else {
+            echo $imageErr;
         }
     }
 }
