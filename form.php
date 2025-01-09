@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 include "sidebar.php";
-include "oopinsert.php";
+include "insert.php";
 ?>
 <main class="app-main">
         <!--begin::App Content Header-->
@@ -28,7 +28,6 @@ include "oopinsert.php";
           <!--begin::Container-->
           <div class="container-fluid">
             <!--begin::Row-->
-          
               <!--end::Col-->
               <!--begin::Col-->
               <div class="col-md-12">
@@ -43,7 +42,6 @@ include "oopinsert.php";
                     <div class="card-body">
                     <div class="col-md-6">
                           <label for="validationCustom01" class="form-label">First name</label>
-
                               <span class="error">* <?php echo $firstnameErr; ?></span>
                           <input
                             type="text"
@@ -52,10 +50,8 @@ include "oopinsert.php";
                            name="firstname" 
                            value="<?php echo $firstname; ?>" 
                           />
-                         
-                          <div class="valid-feedback">Looks good!</div>
-                        </div>
-
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
                         <div class="col-md-6">
                           <label for="validationCustom02" class="form-label">Last name</label>
                           <span class="error">* <?php echo $lastnameErr; ?></span>
@@ -66,11 +62,8 @@ include "oopinsert.php";
                             name="lastname"
                             value="<?php echo $lastname; ?>"
                           />
-                        
                           <div class="valid-feedback">Looks good!</div>
-                        </div>
-                       
-
+                    </div>
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <span class="error">* <?php echo $emailErr; ?></span>
@@ -82,7 +75,6 @@ include "oopinsert.php";
                            value="<?php echo $email; ?>"
                           aria-describedby="emailHelp"
                         />
-                      
                         <div id="emailHelp" class="form-text">
                           We'll never share your email with anyone else.
                         </div>
@@ -91,13 +83,11 @@ include "oopinsert.php";
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <span class="error">* <?php echo $passwordErr; ?></span>
                         <input type="password" class="form-control" name="password" value="<?php echo $password; ?>" id="exampleInputPassword" />
-                       
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                         <span class="error">* <?php echo $cpasswordErr; ?></span>
                         <input type="password" class="form-control" name="cpassword"  value="<?php echo $cpassword; ?>"  id="exampleInputConfirmPassword"/>
-                      
                       </div>
                       <div class="input-group mb-3">
                         <input type="file" class="form-control"  name="image" id="inputGroupFile02" />
@@ -107,14 +97,11 @@ include "oopinsert.php";
                       <span class="input-group-text">Address</span>
                       <textarea class="form-control" name="message" aria-label="With textarea"><?php echo $message; ?></textarea><span class="error">* <?php echo $messageErr; ?></span>
                     </div>
-                    
-                    <div class="mb-3">
+                     <div class="mb-3">
                         <label for="phone number" class="form-label">Phone Number</label>
                         <span class="error">* <?php echo $numberErr; ?></span>
-                        <input type="number" class="form-control"  name="number" value="<?php echo $number; ?>"  id="phone number" />  
-                      
+                        <input type="number" class="form-control"  name="number" value="<?php echo $number; ?>"  id="phone number" />
                       </div>
-                        
                       <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Gender<span class="error">* <?php echo $genderErr; ?></span></legend>
                         <div class="col-sm-10">
@@ -125,11 +112,9 @@ include "oopinsert.php";
                           <div class="form-check"> 
                           <input type="radio" name="gender" id="female" value="female" <?php if ($gender == "female") echo "checked"; ?> />
                            <label class="form-check-label" for="female">Female</label>
-                          
                           </div>
                           <div class="form-check disabled">    
-                      </fieldset>
-                         
+                      </fieldset> 
                       <legend class="col-form-label col-sm-2 pt-0">Hobby <span class="error">* <?php echo $hobbyErr; ?></span></legend>
                         <div class="col-sm-10 offset-sm-2">
                         <div class="col-sm-10">
@@ -154,7 +139,6 @@ include "oopinsert.php";
                           </div>
                         </div>
                       </div>
-                    
                          <div class="col-md-3">
                           <label for="validationCustom04" class="form-label">Country</label>
                           <span class="error">* <?php echo $countryErr; ?></span>
@@ -164,45 +148,18 @@ include "oopinsert.php";
                           <option value="Canada" <?php if ($country == "Canada") echo "selected"; ?>>Canada</option>
                            <option value="Russia" <?php if ($country == "Russia") echo "selected"; ?>>Russia</option>
                            </select>
-                         
-                         
-                        </div>
-                          </div>
-                    
+                      </div>
+                      </div>
                     </div>
-                   
-                    <!--end::Body-->
-                    <!--begin::Footer-->
                     <div class="card-footer">
                       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </div>
-                    <!--end::Footer-->
-                  </form>
-                  <!--end::Form-->
-                </div>
-                <!--end::Quick Example-->
-                <!--begin::Input Group-->
-
-                  <!--end::Form-->
-                  <!--begin::JavaScript-->
-              
-                  <!--end::JavaScript-->
-                </div>
-                <!--end::Form Validation-->
-              </div>
-              <!--end::Col-->
-           
-            <!--end::Row-->
-        
-          <!--end::Container-->
-      
-        <!--end::App Content-->
-       
-      </main>
-                 
-      <?php
-
+                   </form>
+               </div>
+            </div>
+          </div>
+      </main>              
+<?php
 include "footer.php";
 
-?>
 

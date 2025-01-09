@@ -10,7 +10,6 @@ function input_data($data) {
 
 if (isset($_POST['update'])) {
 
-   
     if (empty($_POST["firstname"])) {
         $firstnameErr = "First Name is required";
     } else {
@@ -157,4 +156,4 @@ if (isset($_POST['update'])) {
         }
     }
 }
-?>
+

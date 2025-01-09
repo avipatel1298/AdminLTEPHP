@@ -5,7 +5,7 @@ $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $cpasswordErr = $numbe
 $firstname = $lastname = $email = $password = $cpassword = $number = $gender = $hobby = $country = $message = "";
 
 function input_data($data) {
-    return htmlspecialchars(stripslashes(trim($data)));
+return htmlspecialchars(stripslashes(trim($data)));
 }
 
 if (isset($_POST['update'])) {
@@ -96,11 +96,8 @@ if (isset($_POST['update'])) {
             $img = $_FILES["image"]["name"];
             $tmp_name = $_FILES["image"]["tmp_name"];
             $file_ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
-
-         
             $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
 
-            
             if (!in_array($file_ext, $allowed_types)) {
                 $imageErr = "Invalid file type. Only JPG, JPEG, PNG, GIF are allowed.";
             } else {
@@ -115,33 +112,25 @@ if (isset($_POST['update'])) {
         } else {
          
             $user_id = intval($_GET['id']);
-           $onerecord = new DB_con();  
-          $sql=$onerecord->fetchonerecord($user_id);
+            $onerecord = new DB_con();  
+            $sql=$onerecord->fetchonerecord($user_id);
             $row = mysqli_fetch_assoc($sql);
             if ($row) {
                 $img = $row['image'];  
                 $imageErr = "Uplode Image.";
             }
         }
-
-        
-     
         $updatedata = new DB_con();
-
         $sql= $updatedata->update($firstname, $lastname, $email, $password, $cpassword, $img, $message,$number, $gender,$hobby,$country,$user_id);
-        
         
         if($sql)    
         {
             echo "<script>window.location.href='/avi/AdminLTEPHP/oopview.php'</script>";
             echo "success";
-        
         }
-        else
+             else
         {
              echo "error";
         }
         }
     }
-
-?>

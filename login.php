@@ -1,42 +1,31 @@
 <?php
 session_start();
-include "connection.php";
+include "connection.php"; 
+
 if (isset($_POST['login'])) {
-    
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $password = mysqli_real_escape_string($conn, $_POST['password']);
+  $query = mysqli_query($conn, "SELECT * FROM task WHERE email='$email' and password='$password'");
+  $row = mysqli_fetch_array($query);
+  $count = mysqli_num_rows($query);
 
-    
-    if (empty($email) || empty($password)) {
-        echo "Please enter both email and password.";
-    } else {
-      
-        $query = mysqli_query($conn, "SELECT * FROM task WHERE email='$email' AND password='$password' LIMIT 1");
-
-       
-        $user = mysqli_fetch_assoc($query);
-
-        $num_row = mysqli_num_row($user);
-
-        if ($num_row > 0) {
-      
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['email'] = $row['password'];
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
-          
-            header("Location:form.php");
-            exit();
-        } else {
-            echo "Incorrect email or password. Please try again.";
-        }
+  if ($count > 0 ){ 
+    $_SESSION['user_id'] = $row['id'];
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['firstname'] = $row['firstname'];
+    $_SESSION['lastname'] = $row['lastname'];
+    header("Location: form.php");
+    exit();
+ } else {
+        echo "Incorrect email or password. Please try again.";
     }
 }
 ?>
+
+
 <html>
-    <head>
-    <link
+  <head>
+     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
       integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
@@ -76,14 +65,13 @@ if (isset($_POST['login'])) {
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
     />
-        <body>           
-
-              <div class="card card-warning card-outline mb-4">
+<body>           
+         <div class="card card-warning card-outline mb-4">
                   <!--begin::Header-->
                   <div class="card-header"><div class="card-title">Sign In Form</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form method ="post" action="">
+                 <form method ="post" action="">
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="row mb-3">
@@ -97,31 +85,22 @@ if (isset($_POST['login'])) {
                         <div class="col-sm-10">
                           <input type="password" name="password" class="form-control" id="inputPassword3" />
                         </div>
-                      </div>
-                   
+                      </div> 
                       <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="gridCheck1" />
-                           
+                        
                           </div>
                         </div>
                       </div>
                     </div>
-                    <!--end::Body-->
-                    <!--begin::Footer-->
                     <div class="card-footer">
                       <button type="submit" name="login" class="btn btn-warning">Sign in</button>
                       <button type="submit" class="btn float-end">Cancel</button>
                     </div>
-                    <!--end::Footer-->
-                  </form>
-                  <!--end::Form-->
-
-                </div>
-
+                 </form>    
+        </div>
 </body>
-
-            </head>
-
-                </html>
+</head>
+</html>

@@ -23,7 +23,6 @@ if(isset($_POST['submit'])) {
         }
     }
 
-   
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
@@ -56,29 +55,24 @@ if(isset($_POST['submit'])) {
         $img = $_FILES["image"]["name"];
         $tmp_name = $_FILES["image"]["tmp_name"];
         $file_ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
-
-        
         $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
 
-        
         if (!in_array($file_ext, $allowed_types)) {
             $imageErr = "Invalid file type. Only JPG, JPEG, PNG, GIF are allowed.";
         }
-     
         elseif ($_FILES["image"]["size"] > 5000000) {
             $imageErr = "File size exceeds the limit of 5MB.";
         } 
-       
         else {
             move_uploaded_file($tmp_name, "./image/" . $img);
         }
-    } else {
-        $imageErr = "Please select an image to upload.";
+    }   else {
+            $imageErr = "Please select an image to upload.";
     }
 
     if (empty($_POST["number"])) {
         $numberErr = "Phone Number is required";
-    } else {
+    }   else {
         $number = input_data($_POST["number"]);
         if (!preg_match("/^[0-9]*$/", $number)) {
             $numberErr = "Only numeric value is allowed.";
@@ -122,17 +116,13 @@ if(isset($_POST['submit'])) {
         
          if($sql)    
         {
-          echo "<script>window.location.href='/avi/AdminLTEPHP/oopview.php'</script>";
             echo "success";
-            
-        }
-        else
-       {
+            header("Location: login.php");
+        } else{
              echo "error";
        }
     }
 }
-
 
 function input_data($data) {
     $data = trim($data);

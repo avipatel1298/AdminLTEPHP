@@ -19,9 +19,7 @@ include "config.php";
                 </ol>
               </div>
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
         <!--end::App Content Header-->
         <!--begin::App Content-->
@@ -32,7 +30,7 @@ include "config.php";
             <div class="row">
               <div class="">
                 <div class="">
-                  <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
+                <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
                   <!-- /.card-header -->
                   <div class="card-body">
                     <table class="table table-bordered">
@@ -76,32 +74,18 @@ include "config.php";
                           <td><?php echo htmlentities($row["hobby"]); ?></td>
                           <td><?php echo htmlentities($row["country"]); ?></td>
                           <td><a class="btn btn-primary" href="oopedit.php?id=<?php echo htmlentities($row['id']); ?>">Edit</a>
-                         <a class="btn btn-danger" href="oopdelete.php?id=<?php echo htmlentities($row['id']); ?>">delete</a>
+                          <a class="btn btn-danger" href="oopdelete.php?id=<?php echo htmlentities($row['id']); ?>">delete</a>
                          </td>
                         </tr>
                       </tbody>
                       <?php $cnt++; } ?>
                     </table>
                   </div>
-                  <!-- /.card-body -->
-                
-                <!-- /.card -->
-               
-                <!-- /.card -->
-              </div>
-              <!-- /.col -->
-          
-              <!-- /.col -->
-            </div>
-            <!--end::Row-->
-          </div>
-          <!--end::Container-->
-        </div>
-        <!--end::App Content-->
-      
-      </main>
-      
-      <?php
-      include "footer.php";
-      ?>
+             </div>
+           </div>
+         </div>
+      </div>
+</main>
+ <?php
+ include "footer.php";
  

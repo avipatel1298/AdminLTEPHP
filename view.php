@@ -52,13 +52,12 @@ include "connection.php";
                           <th style="width: 40px">Action</th>
                         </tr>
                       </thead>
-                      <tbody>
-                      <?php  
-                      $no;
-                   $result = mysqli_query($conn,"SELECT * FROM `task`");  
+                     <tbody>
+                       <?php  
+                         $no;
+                        $result = mysqli_query($conn,"SELECT * FROM `task`");  
                      while($row = mysqli_fetch_assoc($result))  {
-                  $no=$no+1; 
-                                      
+                         $no=$no+1;                 
                     ?> 
                         <tr class="align-middle">
                         <th scope=""><?php echo $no?></th>
@@ -81,25 +80,11 @@ include "connection.php";
                       <?php  } ?>
                     </table>
                   </div>
-                  <!-- /.card-body -->
-                
-                <!-- /.card -->
-               
-                <!-- /.card -->
               </div>
-              <!-- /.col -->
-          
-              <!-- /.col -->
             </div>
-            <!--end::Row-->
           </div>
-          <!--end::Container-->
         </div>
-        <!--end::App Content-->
-      
-      </main>
-      
-      <?php
-      include "footer.php";
-      ?>
+   </main>
+<?php
+include "footer.php";
  

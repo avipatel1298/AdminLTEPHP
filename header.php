@@ -1,11 +1,24 @@
+<?php
+session_start();
+include "connection.php"; 
+$user_id = $_SESSION['user_id'];  
+$query = mysqli_query($conn, "SELECT * FROM task WHERE id='$user_id'");
+$row = mysqli_fetch_array($query);
+
+if(empty($row['image']) || is_null($row['image'])) {
+  $profile_image = "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg";
+} else {
+  $profile_image = "images/" .$row['image'];
+}
+?>
+
 <!doctype html>
 <html lang="en">
-  <!--begin::Head-->
-  <head>
+<head>
   <style>
         .error {color: #FF0001;}
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>AdminLTE v4 | Dashboard</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +28,7 @@
       name="description"
       content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS."
     />
-    <meta
+  <meta
       name="keywords"
       content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"
     />
@@ -62,11 +75,11 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
-      <nav class="app-header navbar navbar-expand bg-body">
+<nav class="app-header navbar navbar-expand bg-body">
         <!--begin::Container-->
         <div class="container-fluid">
           <!--begin::Start Navbar Links-->
@@ -201,43 +214,22 @@
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <img
-                  src="../AdminLTEPHP/dist/assets/img/user2-160x160.jpg"
-                  class="user-image rounded-circle shadow"
-                  alt="User Image"
-                />
-                <span class="d-none d-md-inline">Alexander Pierce</span> 
+              <img src="<?php echo $profile_image; ?>" style="width: 50px; height: 50px;">             
+               <?php echo $row['firstname'];?>
                 
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
-                  <img
-                    src="../AdminLTEPHP/dist/assets/img/user2-160x160.jpg"
-                    class="rounded-circle shadow"
-                    alt="User Image"
-                  />
-                  <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2023</small>
-                  </p>
+                <img src="<?php echo $profile_image; ?>" style="width: 200px; height: 200px; border-radius: 50%;"> 
                 </li>
                 <!--end::User Image-->
                 <!--begin::Menu Body-->
-                <li class="user-body">
-                  <!--begin::Row-->
-                  <div class="row">
-                    <div class="col-4 text-center"><a href="#">Followers</a></div>
-                    <div class="col-4 text-center"><a href="#">Sales</a></div>
-                    <div class="col-4 text-center"><a href="#">Friends</a></div>
-                  </div>
-                  <!--end::Row-->
-                </li>
+                
                 <!--end::Menu Body-->
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
               </ul>
@@ -245,7 +237,6 @@
             <!--end::User Menu Dropdown-->
           </ul>
           <!--end::End Navbar Links-->
-        </div>
-        <!--end::Container-->
-      </nav>
+   </div>    <!--end::Container-->
+</nav>
       

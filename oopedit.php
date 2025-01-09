@@ -2,16 +2,14 @@
 include "header.php";
 include "sidebar.php";
 include  "oopupdate.php";
-?>
-<?php
+
 $user_id = intval($_GET['id']);
 $onerecord = new DB_con();  
 $sql=$onerecord->fetchonerecord($user_id);
-
-while($result=mysqli_fetch_array($sql))
-  {
+  while($result=mysqli_fetch_array($sql))
+{
 ?>
-                <main class="app-main">
+ <main class="app-main">
         <!--begin::App Content Header-->
         <div class="app-content-header">
           <!--begin::Container-->
@@ -74,10 +72,8 @@ while($result=mysqli_fetch_array($sql))
                            name="firstname"
                            value="<?php echo $result['firstname'];?>"
                           />
-                        
                           <div class="valid-feedback">Looks good!</div>
                         </div>
-
                         <div class="col-md-6">
                           <label for="validationCustom02" class="form-label">Last name</label>
                           <span class="error">* <?php echo $lastnameErr; ?></span>
@@ -90,8 +86,6 @@ while($result=mysqli_fetch_array($sql))
                           />
                           <div class="valid-feedback">Looks good!</div>
                         </div>
-                       
-
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <span class="error">* <?php echo $emailErr; ?></span>
@@ -102,8 +96,7 @@ while($result=mysqli_fetch_array($sql))
                            name="email"
                            value="<?php echo $result['email'];?>"
                           aria-describedby="emailHelp"
-                        />
-                     
+                        />     
                         <div id="emailHelp" class="form-text">
                           We'll never share your email with anyone else.
                         </div>
@@ -112,25 +105,21 @@ while($result=mysqli_fetch_array($sql))
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <span class="error">* <?php echo $passwordErr; ?></span>
                         <input type="password" class="form-control" name="password"  id="exampleInputPassword1" value="<?php echo htmlspecialchars($result['password']); ?>"/>
-                   
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                         <span class="error">* <?php echo $cpasswordErr; ?></span>
                         <input type="password" class="form-control" name="cpassword" id="exampleInputPassword1" value="<?php echo htmlspecialchars($result['cpassword']); ?>"/>
-                   
                       </div>
-               
                       <div class="input-group mb-3">
                       <?php
-                $imagePath = './image/' . $result['image'] ;
-               
-                if (file_exists($imagePath)) {
-               echo '<img src="' . $imagePath . '"style="width: 50px; height: 50px;"">';
-               } else {
-                   echo '<p>Image not found.</p>';
-                   }
-                  ?>  
+                      $imagePath = './image/' . $result['image'] ;
+                      if (file_exists($imagePath)) {
+                        echo '<img src="' . $imagePath . '"style="width: 50px; height: 50px;"">';
+                       } else {
+                        echo '<p>Image not found.</p>';
+                       }
+                       ?>  
                         <input type="file" class="form-control"  name="image" id="inputGroupFile02"  value="<?php echo $result['image'];?>" />
                         <label class="input-group-text" for="inputGroupFile02">Upload</label><span class="error"><?php echo $imageErr; ?></span>
                         </div>
@@ -156,15 +145,13 @@ while($result=mysqli_fetch_array($sql))
                           <div class="form-check"> 
                           <input type="radio" name="gender" id="female"  value="female" <?php if ($result['gender'] == "female") echo "checked='checked'"; ?>>                       
                             <label class="form-check-label" for="female"> female </label>
-                           
-                          </div>
-                          <div class="form-check disabled">    
+                         </div>
+                         <div class="form-check disabled">    
                       </fieldset>
-
-                      <?php
-                     $chk = explode(",",$result['hobby']);
+                        <?php
+                           $chk = explode(",",$result['hobby']);
                          ?>
-                                              <legend class="col-form-label col-sm-2 pt-0">Hobby <span class="error">* <?php echo $hobbyErr; ?></span></legend>
+                          <legend class="col-form-label col-sm-2 pt-0">Hobby <span class="error">* <?php echo $hobbyErr; ?></span></legend>
                           <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
                           <div class="form-check">
@@ -189,7 +176,6 @@ while($result=mysqli_fetch_array($sql))
                           </div>
                         </div>
                       </div>
-                    
                          <div class="col-md-3">
                           <label for="validationCustom04" class="form-label">Country</label>
                           <span class="error">* <?php echo $countryErr; ?></span>
@@ -210,28 +196,10 @@ while($result=mysqli_fetch_array($sql))
                     <div class="card-footer">
                       <button type="update" class="btn btn-primary" name="update">Update</button>
                     </div>
-                    <!--end::Footer-->
                   </form>
-                  <!--end::Form-->
                 </div>
-                <!--end::Quick Example-->
-                <!--begin::Input Group-->
-
-                  <!--end::Form-->
-                  <!--begin::JavaScript-->
-                
-                  <!--end::JavaScript-->
-                </div>
-                <!--end::Form Validation-->
-              </div>
-              <!--end::Col-->
-            
-            <!--end::Row-->
-       
-          <!--end::Container-->
-      
-        <!--end::App Content-->
-      </main>
-      <?php
-      include "footer.php";
-      ?>
+          </div>
+     </div>
+</main>
+<?php
+include "footer.php";
