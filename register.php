@@ -1,5 +1,6 @@
 <?php
  include "connection.php";
+
 if (isset($_POST['submit'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -31,7 +32,7 @@ if (isset($_POST['submit'])) {
       
 
           $result = mysqli_query($conn, "INSERT INTO `task`(`firstname`, `lastname`, `email`, `password`) 
-                                         VALUES('$firstname', '$lastname', '$email', '$password_hash')");
+                                         VALUES('$firstname', '$lastname', '$email', '$password')");
           
           if ($result) {
               echo "Data inserted successfully!";
