@@ -135,60 +135,60 @@ document.write(name_at)
 </br>
 
 <html>
-    <body>
-        <script> 
-         const fruits_join = ["Banana", "Orange", "Apple", "Mango"];
-         let fruit_string =fruits_join.join("*")
-          document.write(fruit_string)
-            </script>
-    </body>
+<body>
+<script> 
+const fruits_join = ["Banana", "Orange", "Apple", "Mango"];
+let fruit_string =fruits_join.join("*")
+document.write(fruit_string)
+</script>
+</body>
 </html>
 
 
 <br></br>
 
 <html>
-    <body>
-        <script>
-            const fruits_pop = ["Banana", "Orange", "Apple", "Mango","Kiwi"]
-         fruits_pop.pop()
-            document.write(fruits_pop)
-            </script>
-            </body>
-        </html>
+<body>
+<script>
+const fruits_pop = ["Banana", "Orange", "Apple", "Mango","Kiwi"]
+fruits_pop.pop()
+document.write(fruits_pop)
+</script>
+</body>
+</html>
 
 
-        <html>
-            <body>
-                <p id = "element"></p>
-                <script>
-                    const  fruit_unshift = ["Banana", "Orange", "Apple", "Mango","kiwi","Watermelon","Lemon","Tomato"]
-                    fruit_unshift.unshift["Dragon"] 
-                    document.getElementById("element").innerHTML = fruit_unshift
-                    </script>
-                    </body>
-                    </html>
+<html>
+<body>
+<p id = "element"></p>
+<script>
+const  fruit_unshift = ["Banana", "Orange", "Apple", "Mango","kiwi","Watermelon","Lemon","Tomato"]
+fruit_unshift.unshift["Dragon"] 
+document.getElementById("element").innerHTML = fruit_unshift
+</script>
+</body>
+</html>
 <br></br>
 
 <html>
-    <body>
-        <p id ="copy"></p>
-        <script>
-            const fruits_within = ["Banana", "Orange", "Apple", "Mango","Potato"]
-            document.getElementById("copy").innerHTML = fruits_within.copyWithin(0,2)
-             </script>
-            </body>
-            </html>
+<body>
+<p id ="copy"></p>
+<script>
+const fruits_within = ["Banana", "Orange", "Apple", "Mango","Potato"]
+document.getElementById("copy").innerHTML = fruits_within.copyWithin(0,2)
+</script>
+</body>
+</html>
 <br>
 </br>
- <html>
-    <body>
-        <p id = "splice"></p>
-        <script>
-        const fruits_splice = ["Banana", "Orange", "Apple", "Mango","Kiwi","Watermelon","Lemon"]
-        fruits_splice.splice (4,6,"graps","Potato")
-        document.getElementById("splice").innerHTML = fruits_splice
-        </script>           
+<html>
+<body>
+<p id = "splice"></p>
+<script>
+const fruits_splice = ["Banana", "Orange", "Apple", "Mango","Kiwi","Watermelon","Lemon"]
+fruits_splice.splice (4,6,"graps","Potato")
+document.getElementById("splice").innerHTML = fruits_splice
+</script>           
 </body>
 </html>
 
@@ -196,14 +196,32 @@ document.write(name_at)
 </br>
 
 <html>
-    <body>
-        <p id = "date"></p>
-        <script>
-            const e = new Date("1-1-2026 11:13:00")
-            document.getElementById("date").innerHTML = e 
-            </script>
-            </body>
-            </html>
+<body>
+<p id = "date"></p>
+<script>
+const e = new Date("1-1-2026 11:13:00")
+document.getElementById("date").innerHTML = e 
+</script>
+</body>
+</html>
 <br>
 </br>
 
+<html>
+<body>
+<p id="demo"></p>
+<script>
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+document.getElementById("demo").innerHTML = person.fullName()
+</script>
+
+</body>
+</html>
