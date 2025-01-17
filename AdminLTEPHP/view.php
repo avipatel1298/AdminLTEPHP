@@ -44,7 +44,7 @@ include "connection.php";
                           <th>Email</th>
                           <th>Password</th>
                           <th>Confirm Password</th>
-                          <th>Images</th>
+                          <th>Image</th>
                           <th>Address</th>
                           <th>Phone Number</th>
                           <th>Gender</th>
