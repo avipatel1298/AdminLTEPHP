@@ -222,6 +222,8 @@ const person = {
 
 document.getElementById("demo").innerHTML = person.fullName()
 </script>
+<html>
+
 
 </body>
 </html>
