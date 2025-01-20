@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Validation checks
+ 
     if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
         echo "First name can only contain letters and spaces.<br>";
     } elseif (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
@@ -17,21 +17,21 @@ if (isset($_POST['submit'])) {
     } elseif (!preg_match("/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/", $password)) {
         echo "Password must be between 8 and 12 characters, and can include letters, numbers, and special characters.<br>";
     } else {
-        // Check if email already exists in the database
+        
         $email_check_query = mysqli_query($conn, "SELECT * FROM `task` WHERE `email` = '$email'");
 
         if (mysqli_num_rows($email_check_query) > 0) {
-            // Email already exists
+           
             echo "Email already exists. Please use a different email.<br>";
         } else {
-            // Insert new data if email does not exist
+           
             $result = mysqli_query($conn, "INSERT INTO `task`(`firstname`, `lastname`, `email`, `password`) 
                                            VALUES('$firstname', '$lastname', '$email', '$password')");
             
             if ($result) {
                 echo "Data inserted successfully!";
-                header("Location: login.php"); // Redirect to login page
-                exit(); // Ensure no further code runs after the redirect
+                header("Location: login.php"); 
+                exit(); 
             } else {
                 echo "Data insertion failed.<br>";
             }

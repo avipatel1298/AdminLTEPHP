@@ -1,39 +1,13 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-$("button").click(function(){
-$("p").hide();
-});
-});
-    </script>
-<p>hello world </p>
+<script src = "event.js"></script>
+<h3>Button click event</h3>
+<p>Hello world </p>
 <button>Click On Me </button>         
-</body>
-</html>
-<br></br>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("p").click(function(){
-            $(this).hide();
-    });
-});
-    </script>
-    </head>
-    <body>
-        <p> hello  how you day going</p>
-</body>
-</html>
 
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<h3>P tag hide - this click event</h3>  
+    <p class="p-tag"> hello  how you day going</p>
 <script>
     $(document).ready(function(){
         $("buttton").click(function(){
@@ -291,4 +265,5 @@ $(this).hide();
 
 </body>
 </html>
+
 
