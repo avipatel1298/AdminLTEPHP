@@ -2,268 +2,56 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src = "event.js"></script>
+<body>
 <h3>Button click event</h3>
 <p>Hello world </p>
-<button>Click On Me </button>         
+<button>Click On Me </button>  
 
 <h3>P tag hide - this click event</h3>  
-    <p class="p-tag"> hello  how you day going</p>
-<script>
-    $(document).ready(function(){
-        $("buttton").click(function(){
-        $("#demo").hide();
-        });
-    });
+<p class="p-tag"> hello  how you day going</p>
 
-    </script>
-    </head>
-    <body>
-        <h1 id="demo">hello</h1>
-        <button>Click On Me</button>
-</body>
-</html>
-
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("button").click(function(){
-$("#test").hide();
-});
-});
-</script>
-</head>
-<body>
-
-<h2>This is a heading</h2>
-
+<h3>When a user clicks on a button, the element with id="test" will be hidden:</h3>
 <p>This is a paragraph.</p>
 <p id="test">This is another paragraph.</p>
-
 <button>Click me</button>
 
-</body>
-</html>
+<h3>The function is executed when the user double-clicks on the HTML element:</h3>
+<p>If you double-click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
 
-<br></br>
+<h3>The function is executed when the mouse pointer enters the HTML element:</h3>
+<p id="p1">Enter this paragraph.</p>
 
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("button").click(function(){
-s(".test").hide();
-});
-});
-</script>
-</head>
-<body>
-<p>This is another paragraph.</p>
-<p id ="test">This is a paragraph </p>
-<button>Click me</button>
+<h3>The function is executed when the mouse pointer leaves the HTML element:</h3>
+<p id="demo">This is a paragraph.</p>
 
-</body>
-</html>
+<h3>The function is executed, when the left, middle or right mouse button is pressed down, while the mouse is over the HTML element:</h3>
+<p id="pointerdown">This is a pointer down </p>
 
-<br></br>
+<h3>The function is executed, when the left, middle or right mouse button is released, while the mouse is over the HTML element:</h3>
+<p id="pointerup">This is Pointerup</p>
 
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("p").click(function(){
-$(this).hide();
-});
-});
-</script>
-</head>
-<body>
+<h3>The first function is executed when the mouse enters the HTML element, and the second function is executed when the mouse leaves the HTML element:</h3>
+<p id="pointerhover">when pointer hover html element </p>
 
+<h3>The on() method attaches one or more event handlers for the selected elements.
+Attach a click event to a <p> element:</h3>
 <p>If you click on me, I will disappear.</p>
 <p>Click me away!</p>
 <p>Click me too!</p>
 
-</body>
-</html>
+<h3>With jQuery, you can hide and show HTML elements with the hide() and show() methods:</h3>
+<p id="p_test">If you click on the "Hide" button, I will disappear.</p>
+<button id="hide">Hide</button>
+<button id="show">Show</button>
 
-<br></br>
+<h3>The optional speed parameter specifies the speed of the hiding/showing, and can take the following values: "slow", "fast", or milliseconds.</h3>
+<button>Hide</button>
+<p id="p_test">This is a paragraph with little content.</p>
+<p id="p_test">This is another small paragraph.</p>
 
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("p").dblclick(function(){
-$(this).hide();
-});
-});
-</script>
-</head>
-<body>
-
-<p>hello world </p>
-<p>Click me away</p>
-<p>Click me too</p>
-
-</body>
-</html>
-
-
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("#p1").mouseenter(function(){
-alert("You entered p1!");
-});
-});
-</script>
-</head>
-<body>
-
-<p id="p1">write a paragraph</p>
-
-</body>
-</html>
-
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("#p1").mouseleave(function(){
-alert("Bye! You now leave p1!");
-});
-});
-</script>
-</head>
-<body>
-
-<p id="p1">This is a paragraph too write short note </p>
-
-</body>
-</html>
-
-<br></br>
-
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("#p1").mousedown(function(){
-alert("Mouse down over p1!");
-});
-});
-</script>
-</head>
-<body>
-
-<p id="p1">write a short note in this paragraph</p>
-
-</body>
-</html>
-
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("#p1").mouseup(function(){
-alert("Mouse up over p1!");
-});
-});
-</script>
-</head>
-<body>
-
-<p id="p1">Hello World </p>
-
-</body>
-</html>
-
-<br></br>
-
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("#p1").hover(function(){
-alert("You entered p1!");
-},
-function(){
-alert("Bye! You now leave p1!");
-}); 
-});
-</script>
-</head>
-<body>
-
-<p id="p1">write a javascript function </p>
-
-</body>
-</html>
-
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("input").focus(function(){
-$(this).css("background-color", "yellow");
-});
-$("input").blur(function(){
-$(this).css("background-color", "violet");
-});
-});
-</script>
-</head>
-<body>
-
-Name: <input type="text" name="fullname"><br>
-Email: <input type="text" name="email"><br>
-Password: <input type ="password" name = "password"><br>
-Address:<input type="text" name="address"><br>
-</body>
-</html>
-
-<br></br>
-
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-$("p").on("click", function(){
-$(this).hide();
-});
-});
-</script>
-</head>
-<body>
-
-<p>If you click on me, I will disappear.</p>
-<p>Click me away!</p>
-<p>Click me too!</p>
-
-</body>
-</html>
-
-
+<h3>You can also toggle between hiding and showing an element with the toggle() method.</h3>
+<button>Toggle between hiding and showing the paragraphs</button>
+<p id="p_toggle">This is a paragraph with little content.</p>
+<p id="p_toggle">This is another small paragraph.</p>

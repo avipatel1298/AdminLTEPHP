@@ -165,10 +165,8 @@ return this.firstName + " " + this.lastName;
 
 document.getElementById("demo").innerHTML = person.fullName()
 </script>
-<html>
-
-
+</head>
 </body>
-<html>
-<head>
+</html>
+
 
