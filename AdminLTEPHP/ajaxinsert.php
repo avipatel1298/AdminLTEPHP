@@ -1,8 +1,9 @@
+
 <?php
 include "ajaxconnection.php";
-if(isset($_POST['submit'])){
-    $firstname=$_POST['firstname'];
-    $lastname=$_POST['lastname'];
+if (isset($_POST['firstname']) && isset($_POST['lastname'])  && isset($_FILES['image']))   {
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
     $email=$_POST['email'];
     $password=$_POST['password'];
     $cpassword=$_POST['cpassword'];
@@ -14,11 +15,15 @@ if(isset($_POST['submit'])){
     $gender=$_POST['gender'];
     $hobby=implode(",",$_POST['hobby']);
     $country=$_POST['country'];
-   $result=mysqli_query($conn,"INSERT INTO `registrations`(`firstname`,`lastname`,`email`,`password`,`cpassword`,`image`,`message`,`number`,`gender`,`hobby`,`country`)
-   VALUES('$firstname','$lastname','$email','$password','$cpassword','$img','$message','$number','$gender','$hobby','$country')");
+
+    $result=mysqli_query($conn,"INSERT INTO `registrations`(`firstname`,`lastname`,`email`,`password`,`cpassword`,`image`,`message`,`number`,`gender`,`hobby`,`country`)
+    VALUES('$firstname','$lastname','$email','$password','$cpassword','$img','$message','$number','$gender','$hobby','$country')");
+
+//    echo "INSERT INTO `registrations`(`firstname`,`lastname`,`email`,`password`,`cpassword`,`image`)
+//     VALUES('$firstname','$lastname','$email','$password','$cpassword','$img')"; die;
+
 
 if($result){
-   
     echo "data insert suceessfully";
 }else{
     echo "data  not insert suceessfully";

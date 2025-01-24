@@ -1,2 +1,2 @@
 <?php
-$conn = mysqli_connect("localhost","root","admin123","registrations");
+$conn = mysqli_connect("localhost","root","admin123","crudajax");
